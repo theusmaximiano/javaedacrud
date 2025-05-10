@@ -31,14 +31,6 @@ public class ProdutoMemoryDAO implements ProdutoDAO {
     }
 
     @Override
-    public void exclui(Integer id) {
-        Produto produto = buscaPorId(id);
-        if (produto != null) {
-            produtos.remove(produto);
-        }
-    }
-
-    @Override
     public Collection<Produto> lista() {
         return produtos;
     }
