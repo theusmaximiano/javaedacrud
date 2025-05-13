@@ -16,6 +16,7 @@ public class Main {
             System.out.println("1 - Inserir");
             System.out.println("2 - Alterar");
             System.out.println("3 - Pesquisar");
+            System.out.println("4 - Excluir");
             System.out.println("5 - Listar");
             System.out.println("6 - Sair");
             opcao = s.nextInt();

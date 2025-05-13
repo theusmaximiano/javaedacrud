@@ -13,21 +13,21 @@ public class ProdutoMemoryDAO implements ProdutoDAO {
 
     @Override
     public Produto buscaPorId(Integer id) {
-        for (Produto p : produtos) {
-            if (p.getId().equals(id)) {
-                return p;
-            }
-        }
-        return null;
+        return produtos.stream()
+                .filter(p -> p.getId().equals(id))
+                .findFirst()
+                .orElse(null); // Retorna null caso não encontre
     }
 
     @Override
     public void altera(Produto produto) {
-        Produto produtoExistente = buscaPorId(produto.getId());
-        if (produtoExistente != null) {
-            produtoExistente.setProduto(produto.getProduto());
-            produtoExistente.setPreco(produto.getPreco());
-        }
+        exclui(produto.getId()); // Exclui o antigo produto
+        produtos.add(produto); // Adiciona o novo produto alterado
+    }
+
+    @Override
+    public void exclui(Integer id) {
+        produtos.removeIf(p -> p.getId().equals(id)); // Remove produto pelo id
     }
 
     @Override
